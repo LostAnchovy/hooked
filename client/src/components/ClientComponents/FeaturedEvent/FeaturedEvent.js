@@ -9,6 +9,7 @@ const featuredEvent = (props) => {
     return (
         <React.Fragment>
             <div className="container">
+            <h1 className="text-center">{props.event.title}</h1>
             <img src="http://thelostanchovy.com/wp-content/uploads/2017/08/Big-Sur-Coast-1.jpg" alt="Placeholder" className="img-thumbnail"/>
             </div>
             <br />
@@ -23,16 +24,13 @@ const featuredEvent = (props) => {
                     <p>{props.event.description}</p>
                 </Col>
             </Row>
-            <Link to="/event">
+            {/* <Link to="/event">
                 <button className="btn btn-warning mx-5"> Participant List</button>
             </Link>
             <Link to="/event">
                 <button className="btn btn-success mx-5"> Register Here</button>
-            </Link>
-            {/* <Link to="/event">
-                <button className="btn btn-primary mx-5"> Event Page </button>
             </Link> */}
-            <Link to={`/event/${props.event.id}`}><button className="btn btn-primary">Event Page</button> </Link>
+            <Link to={`/event/${props.event.id}`}><button className="btn btn-primary text-center">Event Page</button> </Link>
         </React.Fragment>
     );
 }

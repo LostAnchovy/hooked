@@ -15,12 +15,23 @@ const header = (props) => {
                 <div className="navbar-nav nav-item mr-auto" data-target=".navbar-collapse.show" data-toggle="collapse">
                     <Link to="/" className="nav-link">Home</Link>
                     {props.isAdmin ?
-                        <Link to="/admin" className="nav-link">Admin</Link> : null
+                        // <Link to="/admin" className="nav-link">Admin</Link> : null
+                        <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Admin
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <Link to="/admin" className="dropdown-item">Dashboard </Link>
+                          <Link to="/admin/users"  className="dropdown-item">Registered Users</Link>
+                          <div className="dropdown-divider"></div>
+                          <Link to="/admin/orders"  className="dropdown-item">Orders</Link>
+                        </div>
+                      </li>:null
                     }
                 </div>
                 {props.loggedIn ?
                     <div className="navbar-nav nav-item" data-target=".navbar-collapse.show" data-toggle="collapse">
-                        <Link className="nav-link" to="/user">Welcome {props.firstName}</Link>
+                        <Link className="nav-link" to={`/user/${props.userId}`} >Welcome {props.firstName}</Link>
                         <Link className="nav-link" to="/logout"> Logout</Link>
                     </div> :
                     <div className="navbar-nav nav-item" data-target=".navbar-collapse.show" data-toggle="collapse">

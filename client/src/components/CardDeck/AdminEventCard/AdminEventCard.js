@@ -1,21 +1,24 @@
 import React, { Component } from 'react';
 import { Row, Col, Card, CardBody, CardImage, CardTitle, CardText } from 'mdbreact';
 import { Link } from 'react-router-dom';
+import {connect} from 'react-redux'
+import * as actions from '../../../store/actions/index'
 import axios from 'axios'
+
 class AdminEventCard extends Component {
     constructor(props) {
         super(props)
     }
 
     // Need to change component to pull dynamic content (from props?)
-    // deleteEvent = (id) => {
-    //     axios.delete(`/api/event/${this.props.event.id}`)
-    //     console.log('Delete Event Method Fired! id:', this.props.event.id)
-    //     console.log('this is a test')
-    //   }
+    deleteEvent = (id) => {
+        axios.delete(`/api/event/${this.props.event.id}`)
+        console.log('Delete Event Method Fired! id:', this.props.event.id)
+        console.log('this is a test')
+        this.props.history.push(`/`)
+      }
 
     render() {
-        console.log('delete props', this.props.delete)
         return (
             <Col sm="4">
                 <Card className="m-1">
@@ -41,7 +44,7 @@ class AdminEventCard extends Component {
                             </Col>
                             <Col md="4">
                                 {/* Add functionality to handle the button click */}
-                                <button className="btn p-1 m-1 btn-sm btn-block btn-secondary" onClick={this.props.delete}>Delete</button>
+                                <button className="btn p-1 m-1 btn-sm btn-block btn-secondary"  onClick={this.deleteEvent}>Delete</button>
                             </Col>
                         </Row>
                     </CardBody>
@@ -50,4 +53,10 @@ class AdminEventCard extends Component {
         )
     }
 }
-export default AdminEventCard;
+
+const mapDispatchToProps = (dispatch) =>{
+    return {
+        deleteEvent: () => dispatch(actions.deleteEvent())
+    }
+}
+export default connect (null, mapDispatchToProps)(AdminEventCard);

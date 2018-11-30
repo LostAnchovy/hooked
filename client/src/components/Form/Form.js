@@ -44,9 +44,9 @@ class Form extends Component {
         event.preventDefault();
         if (this.validate() === true) {
             this.props.submit(this.props.data, this.props.isLogin);
-            // this.props.history.push('/')
         }
         this.setState({ isValidated: true });
+        this.props.history.push('/')
     }
 
     render() {

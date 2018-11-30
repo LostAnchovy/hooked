@@ -78,8 +78,7 @@ export const logout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('exp');
     localStorage.removeItem('userId');
-    localStorage.removeItem('name');
-    localStorage.clear()
+    localStorage.removeItem('name')
     return {
         type: actionTypes.AUTH_LOGOUT
     };

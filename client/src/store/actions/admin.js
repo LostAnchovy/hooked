@@ -1,13 +1,11 @@
 import axios from 'axios';
 import * as actionTypes from './actionTypes';
 
-export const fetchAdminEvents = (userId) => {
+export const fetchAdminEvents = () => {
     return dispatch => {
         axios.get('/api/events/all')
             .then(res => {
-                // filter to only include events where the admin is authorized to have access using the userId argument
-                const adminEvents = []
-                dispatch(fetchAdminEventsSuccess(adminEvents));
+                dispatch(fetchAdminEventsSuccess(res.data));
             }).catch(err => {
                 dispatch(fetchAdminEventsFail(err));
             });
@@ -27,6 +25,17 @@ export const fetchAdminEventsFail = (error) => {
         error: error
     };
 };
+
+// export const deleteEvent =(eventId) =>{
+//     return dispatch=> {
+//         axios.delete(`/api/event/${eventId}`).then(res=>{
+//             dispatch(fetchAdminEvents())
+//         }).catch(err=>{
+//             dispatch(fetchAdminEventsFail(err))
+//         })
+//     }
+// }
+
 
 // ACTIONS THAT WE NEED:
 // CREATE EVENT, EVENT PRODUCTS, EVENT SPONSORS

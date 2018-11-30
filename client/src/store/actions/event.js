@@ -13,6 +13,7 @@ export const fetchAllEvents = () => {
 };
 
 export const fetchAllEventsSuccess = (events) => {
+    console.log('fetchAllEvents', events)
     return {
         type: actionTypes.FETCH_ALL_EVENTS_SUCCESS,
         events: events
@@ -54,6 +55,17 @@ export const fetchUserEventsFail = (error) => {
         error: error
     };
 };
+
+export const deleteEvent =(eventId) =>{
+    console.log('deletedEvent', eventId)
+    return dispatch=> {
+        axios.delete(`/api/event/${eventId}`).then(res=>{
+            dispatch(fetchAllEvents())
+        }).catch(err=>{
+            dispatch(fetchAllEventsFail(err))
+        })
+    }
+}
 
 // HAVING REDUX HANDLE FETCHING ONE EVENT CAN BE HERE OR CAN BE HANDLED LOCALLY IN RELEVANT COMPONENTS WE SHOULD DISCUSS WHICH WOULD BE BETTER FOR OUR APP
 // fetchOneEvent

@@ -71,12 +71,3 @@ class resetPassword extends Component {
 
 export default resetPassword;
 
-// const resetPassword = () => {
-//     return(
-//         <React.Fragment>
-//             <h1>Reset Password</h1>
-
-//         </React.Fragment>
-//     )
-// }
-// export default resetPassword;

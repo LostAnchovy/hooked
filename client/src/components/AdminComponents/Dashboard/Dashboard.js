@@ -23,19 +23,19 @@ class Dashboard extends Component {
     // }
 
     render() {
-        const deleteEvent = (id) => {
-            console.log("delete event id", id)
-            axios.delete(`/api/event/${id}`)
-            // console.log('Delete Event Method Fired! id:', this.props.event.id)
-            console.log('this is a test')
-            this.props.fetchAllEvents();
-            console.log('render method ran')
-        }
+        // const deleteEvent = (id) => {
+        //     console.log("delete event id", id)
+        //     axios.delete(`/api/event/${id}`)
+        //     // console.log('Delete Event Method Fired! id:', this.props.event.id)
+        //     console.log('this is a test')
+        //     this.props.fetchAllEvents();
+        //     console.log('render method ran')
+        // }
         return (
             <React.Fragment className="text-left">
                 <CardDeck>
                     {this.props.events.map((event) => {
-                        return <AdminEventCard key={event.id} event={event} delete={deleteEvent} />
+                        return <AdminEventCard key={event.id} event={event} />
                     })
                     }
                 </CardDeck>

@@ -23,7 +23,7 @@ exports.create =(req,res)=>{
         res.json({success:true, token:token, firstName: user.first_name, userId: user.id, isAdmin: user.isAdmin})
     }).catch((err)=>{
         console.log('Create User Error: ', err)
-        res.status(501).send({ success: false, msg:'can not enter Event into DB'})
+        res.status(501).send({ success: false, msg:'Please try another Email or Username'})
     })
 }
 

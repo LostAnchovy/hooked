@@ -69,7 +69,7 @@ class App extends Component {
     return (
       <div className="text-center">
         <img style={style} src="http://thelostanchovy.com/wp-content/uploads/2018/07/banner-1.jpg" alt="Fishing Rod Header" className="img-fluid" />
-        <Header loggedIn={this.props.isAuthenticated} isAdmin={this.props.isAdmin} firstName={this.props.firstName} />
+        <Header loggedIn={this.props.isAuthenticated} isAdmin={this.props.isAdmin} firstName={this.props.firstName} userId={this.props.userId} />
         <div className="px-1">
           {routes}
         </div>
@@ -84,13 +84,13 @@ const mapStateToProps = state => {
     isAuthenticated: state.auth.token !== null,
     firstName: state.auth.firstName,
     isAdmin: state.auth.isAdmin,
+    userId: state.auth.userId
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
       authCheckState: () => dispatch(actions.authCheckState()),
-      // logout: () => dispatch(actions.logout())
   }
 }
 
