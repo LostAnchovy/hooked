@@ -4,7 +4,7 @@ import { Navbar } from 'mdbreact';
 
 
 const header = (props) => {
-    console.log('props from header',props)
+    let userURL=`/user/${props.id}`;
     return (
         <Navbar dark color="stylish-color-dark" expand="lg" sticky="top" className="mb-5">
             <button className="navbar-toggler mx-auto" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"

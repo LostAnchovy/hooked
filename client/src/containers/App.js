@@ -22,8 +22,8 @@ import Reset from '../components/ClientComponents/Reset/Reset'
 import * as actions from '../store/actions/index';
 
 class App extends Component {
-  componentDidMount(){
-       this.props.authCheckState();
+  componentDidMount() {
+    this.props.authCheckState();
   }
 
   render() {
@@ -34,10 +34,9 @@ class App extends Component {
       <Switch>
         <Route exact path='/' component={Dashboard} />
         <Route exact path='/login' component={Login} />
-        <Route exact path='/logout' component={Logout} />
         <Route exact path='/register' component={Registration} />
         <Route exact path='/resetPassword' component={ResetPassword} />
-        <Route path='/reset/:token' component={Reset}/>
+        <Route path='/reset/:token' component={Reset} />
         <Route path='/user/:userId' component={UserProfile} />
         <Route path='/event/:eventId' component={EventPage} />
         <Route path='/participants' component={ParticipantList} />
@@ -48,9 +47,7 @@ class App extends Component {
       routes = (
         <Switch>
           <Route exact path='/' component={Dashboard} />
-          <Route exact path='/login' component={Login} />
           <Route exact path='/logout' component={Logout} />
-          <Route exact path='/register' component={Registration} />
           <Route exact path='/resetPassword' component={ResetPassword} />
           <Route path='/user/:userId' component={UserProfile} />
           <Route path='/event/:eventId' component={EventPage} />
@@ -83,6 +80,7 @@ const mapStateToProps = state => {
   return {
     isAuthenticated: state.auth.token !== null,
     firstName: state.auth.firstName,
+    id: state.auth.userId,
     isAdmin: state.auth.isAdmin,
     userId: state.auth.userId
   }
@@ -90,7 +88,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-      authCheckState: () => dispatch(actions.authCheckState()),
+    authCheckState: () => dispatch(actions.authCheckState())
   }
 }
 
