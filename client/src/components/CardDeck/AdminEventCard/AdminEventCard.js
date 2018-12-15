@@ -20,7 +20,7 @@ class AdminEventCard extends Component {
 
     render() {
         return (
-            <Col md="4">
+            <Col lg="4">
                 <Card className="m-1">
                     <CardImage className="img-fluid img-cover" width="100%" src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(97).jpg" />
                     <CardBody>

@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 // eventCard component needs to receive a single event as props to display dynamic content
 const eventCard = (props) => {
     return (
-        <Col md="4">
-            <Card className="m-3">
-                <CardImage className="img-fluid img-cover" src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(97).jpg" />
+        <Col lg="4">
+            <Card className="m-1">
+            <CardImage className="img-fluid img-cover" width="100%" src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(97).jpg" />
                 <CardBody>
                     <CardTitle className="text-center">{props.event.title}</CardTitle>
 
