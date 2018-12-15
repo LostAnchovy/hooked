@@ -19,6 +19,7 @@ import AdminProductList from '../components/AdminComponents/ProductList/ProductL
 import AdminSponsorList from '../components/AdminComponents/SponsorList/SponsorList';
 import AdminParticipantList from '../components/AdminComponents/ParticipantList/ParticipantList';
 import Reset from '../components/ClientComponents/Reset/Reset'
+import EditEvent from '../components/AdminComponents/EditEvent/EditEvent'
 import * as actions from '../store/actions/index';
 
 class App extends Component {
@@ -58,6 +59,7 @@ class App extends Component {
           <Route path='/admin/product' component={AdminProductList} />
           <Route path='/admin/sponsor' component={AdminSponsorList} />
           <Route path='/admin/participant' component={AdminParticipantList} />
+          <Route path='/admin/event/edit/:eventId' component={EditEvent}/>
           <Route path='/admin' component={AdminDashboard} />
           <Redirect to="/" />
         </Switch>

@@ -58,7 +58,6 @@ export const authFail = (error) => {
 };
 
 export const logout = () => {
-    console.log('Inside auth logout')
     localStorage.removeItem('token');
     localStorage.removeItem('exp');
     localStorage.removeItem('userId');

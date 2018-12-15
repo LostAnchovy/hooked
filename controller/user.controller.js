@@ -21,8 +21,8 @@ exports.create =(req,res)=>{
         var token = jwt.sign({name: user.first_name, _id: user.id, isAdmin: user.isAdmin},process.env.SECRET, {expiresIn:  "24h" });
         res.json({success:true, token:token, firstName: user.first_name, userId: user.id, isAdmin: user.isAdmin})
     }).catch((err)=>{
-        console.log('Create User Error: ', err)
-        res.status(501).send({ success: false, msg:'Please try another Email or Username'})
+        // console.log('Create User Error: ', err)
+        // res.status(501).send({ success: false, msg:'Please try another Email or Username'})
         let errorMSG = '';
         if(err.errors[0].message === 'user_name must be unique'){
             errorMSG = 'User name must be unique'
