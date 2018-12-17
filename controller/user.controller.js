@@ -37,7 +37,7 @@ exports.create =(req,res)=>{
 
 exports.findAll = (req, res) => {
     var token = getToken(req.headers)
-    // console.log('parced authorization token:', token)
+    console.log('parced authorization token:', token)
     jwt.verify(token, process.env.SECRET, (err, result) => {
         // console.log(result)
         if (err) {

@@ -12,7 +12,34 @@ export const fetchAdminEvents = () => {
     };
 };
 
+export const fetchAllUsers = ()=>{
+    return dispatch =>{
+        axios.get('/api/users/all')
+        .then(res=>{
+            dispatch(fetchAllUsersSuccess(res.data))
+        }).catch(err=>{
+            dispatch(fetchallUsersFail(err))
+        })
+    }
+}
+
+export const fetchAllUsersSuccess =(users)=>{
+    console.log('fetchAllUsers', users)
+    return{
+        type:actionTypes.FETCH_ALL_USERS_SUCCESS,
+        Users: users
+    }
+}
+
+export const fetchallUsersFail =(error)=>{
+    return{
+        type:actionTypes.FETCH_ALL_USERS_FAIL,
+        error: error 
+    }
+}
+
 export const fetchAdminEventsSuccess = (events) => {
+    console.log(events)
     return {
         type: actionTypes.FETCH_USER_EVENTS_SUCCESS,
         adminEvents: events
@@ -25,6 +52,8 @@ export const fetchAdminEventsFail = (error) => {
         error: error
     };
 };
+
+
 
 // export const deleteEvent =(eventId) =>{
 //     return dispatch=> {

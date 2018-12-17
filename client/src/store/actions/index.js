@@ -6,6 +6,7 @@ export {
 } from './auth';
 
 export {
+    fetchAllUsers
     // deleteEvent
 } from './admin';
 

@@ -20,6 +20,7 @@ import AdminSponsorList from '../components/AdminComponents/SponsorList/SponsorL
 import AdminParticipantList from '../components/AdminComponents/ParticipantList/ParticipantList';
 import Reset from '../components/ClientComponents/Reset/Reset'
 import EditEvent from '../components/AdminComponents/EditEvent/EditEvent'
+import UsersList from '../components/AdminComponents/UsersList/UsersList'
 import * as actions from '../store/actions/index';
 
 class App extends Component {
@@ -56,6 +57,7 @@ class App extends Component {
           <Route path='/admin/createEvent' component={AdminCreateEvent} />
           <Route path='/admin/createProduct' component={AdminCreateProduct} />
           <Route path='/admin/createSponsor' component={AdminCreateSponsor} />
+          <Route path='/admin/users' component={UsersList} />
           <Route path='/admin/product' component={AdminProductList} />
           <Route path='/admin/sponsor' component={AdminSponsorList} />
           <Route path='/admin/participant' component={AdminParticipantList} />
