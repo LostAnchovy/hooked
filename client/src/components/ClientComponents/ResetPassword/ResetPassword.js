@@ -4,20 +4,30 @@ import axios from 'axios'
 
 class resetPassword extends Component {
     state = {
+        showFormSuccess: false,
         validate: false,
         submitted: false,
         email: '',
     }
     handleemailChange = event => { this.setState({ email: event.target.value }) }
 
-    submit = () => {
+    submit = (event) => {
+        event.preventDefault();
+        this.setState({ showFormSuccess: true})
         this.setState({ submitted: true })
         const user = {
             email: this.state.email,
         };
-        axios.post('/resetpassword', user).then(res => {
-            this.props.history.push('/')
-        })
+        axios.post('/resetpassword', user);
+        setTimeout(() => { this.setState({ showFormSuccess: false }); }, 10000)
+    }
+
+    _renderSuccessMessage() {
+        return (
+            <div className={"alert alert-success mt-4"} role="alert">
+                <p>An Email was sent for validation. Please check to instructions to update your user information </p>
+            </div>
+        )
     }
 
     _renderErrorMessage() {
@@ -37,6 +47,7 @@ class resetPassword extends Component {
                     <Col md="1" />
                     <Col md="10 text-left">
                         {/* Should we wrap this in a FORM class?? */}
+                        {this.state.showFormSuccess ? this._renderSuccessMessage() : null}
                         {this.props.error ? this._renderErrorMessage() : null}
                         <form>
                             <div className="form-group">

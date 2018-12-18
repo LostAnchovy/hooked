@@ -9,9 +9,7 @@ class UsersList extends Component {
     componentDidMount(){
         this.props.fetchAllUsers();
     }
-
     // create function to delete user from DB. Need userId
-
     deleteUser(id){
         axios.delete(`/api/user/${id}`)
         this.componentDidMount()
