@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
+import axios from 'axios'
 import * as actions from '../../../store/actions/index';
 
 class UsersList extends Component {
@@ -7,6 +8,14 @@ class UsersList extends Component {
 
     componentDidMount(){
         this.props.fetchAllUsers();
+    }
+
+    // create function to delete user from DB. Need userId
+
+    deleteUser(id){
+        axios.delete(`/api/user/${id}`)
+        console.log('this funciton was fired!');
+        this.componentDidMount()
     }
     render() { 
         return (
@@ -28,7 +37,7 @@ class UsersList extends Component {
                     <th scope="row">{user.id}</th>
                     <td>{user.first_name} {user.last_name}</td>
                     <td>{user.email}</td>
-                    <td><button className="btn-small btn-danger">Delete</button></td>
+                    <td><button className="btn-small btn-danger" onClick={()=>this.deleteUser(user.id)}>Delete</button></td>
                     </tr>
                 </tbody>
                     )}

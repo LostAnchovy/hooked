@@ -32,7 +32,7 @@ export const auth = (data, isLogin) => {
             localStorage.setItem('exp', tokenPayload.exp)
             dispatch(authSuccess(tokenPayload));
         }).catch(error => {
-            console.log(error.response.data.msg)
+            // console.log(error.response.data.msg)
             dispatch(authFail(error.response.data.msg));
         });
         
