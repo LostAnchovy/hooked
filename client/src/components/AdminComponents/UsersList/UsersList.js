@@ -14,7 +14,6 @@ class UsersList extends Component {
 
     deleteUser(id){
         axios.delete(`/api/user/${id}`)
-        console.log('this funciton was fired!');
         this.componentDidMount()
     }
     render() { 
