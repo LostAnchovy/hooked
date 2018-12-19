@@ -54,18 +54,6 @@ export const fetchAdminEventsFail = (error) => {
 };
 
 
-
-// export const deleteEvent =(eventId) =>{
-//     return dispatch=> {
-//         axios.delete(`/api/event/${eventId}`).then(res=>{
-//             dispatch(fetchAdminEvents())
-//         }).catch(err=>{
-//             dispatch(fetchAdminEventsFail(err))
-//         })
-//     }
-// }
-
-
 // ACTIONS THAT WE NEED:
 // CREATE EVENT, EVENT PRODUCTS, EVENT SPONSORS
 // FETCH EVENTS (BASED OFF OF ADMIN ACCESS LEVELS)

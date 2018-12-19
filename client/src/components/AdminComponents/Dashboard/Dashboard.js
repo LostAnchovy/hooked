@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import CardDeck from '../../CardDeck/CardDeck';
-import AdminEventCard from '../../CardDeck/AdminEventCard/AdminEventCard';
+import { Row, Col, Card, CardBody, CardImage, CardTitle, CardText } from 'mdbreact';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../../../store/actions/index';
@@ -13,32 +12,49 @@ class Dashboard extends Component {
         this.props.fetchAllEvents();
     }
 
-    // deleteEvent = (id) => {
-    //     console.log("delete event id",id)
-    //     axios.delete(`/api/event/${id}`)
-    //     // console.log('Delete Event Method Fired! id:', this.props.event.id)
-    //     console.log('this is a test')
-    //     this.props.fetchAllEvents();
-    //     console.log('render method ran')
-    // }
+    deleteEvent = (id) => {
+        console.log("delete event id",id)
+        axios.delete(`/api/event/${id}`)
+        this.componentDidMount()
+    }
 
     render() {
-        // const deleteEvent = (id) => {
-        //     console.log("delete event id", id)
-        //     axios.delete(`/api/event/${id}`)
-        //     // console.log('Delete Event Method Fired! id:', this.props.event.id)
-        //     console.log('this is a test')
-        //     this.props.fetchAllEvents();
-        //     console.log('render method ran')
-        // }
         return (
             <React.Fragment className="text-left">
-                <CardDeck>
-                    {this.props.events.map((event) => {
-                        return <AdminEventCard key={event.id} event={event} />
-                    })
-                    }
-                </CardDeck>
+                <div className="card-deck m-2 p-3">
+                    {this.props.events.map((event, i)=>
+                    <Col lg="4" key={i}>
+                        <Card className="m-1">
+                            <CardImage className="img-fluid img-cover" width="100%" src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(97).jpg" />
+                            <CardBody>
+                                <CardTitle className="text-center">{event.title}</CardTitle>
+                                <CardText className="text-center">{event.description}.</CardText>
+                                <Row>
+                                    <Col md="4">
+                                        <Link to="/admin/product"><button className="btn p-1 m-1 btn-sm btn-block btn-primary">Products</button> </Link>
+                                    </Col>
+                                    <Col md="4">
+                                        <Link to="/admin/participant"><button className="btn p-1 m-1 btn-sm btn-block btn-default">Participants</button> </Link>
+                                    </Col>
+                                    <Col md="4">
+                                        <Link to="/admin/sponsor"><button className="btn p-1 m-1 btn-sm btn-block btn-secondary">Sponsors</button> </Link>
+                                    </Col>
+                                    <Col md="4">
+                                        <Link to="/admin/orders"><button className="btn p-1 m-1 btn-sm btn-block btn-primary">Orders</button> </Link>
+                                    </Col>
+                                    <Col md="4">
+                                        <Link to={`/admin/event/edit/${event.id}`}><button className="btn p-1 m-1 btn-sm btn-block btn-default">Update</button> </Link>
+                                    </Col>
+                                    <Col md="4">
+                                        {/* Add functionality to handle the button click */}
+                                        <button className="btn p-1 m-1 btn-sm btn-block btn-secondary" onClick={()=>this.deleteEvent(event.id)}>Delete</button>
+                                    </Col>
+                                </Row>
+                            </CardBody>
+                        </Card>
+                    </Col>
+                    )}
+                </div>
                 <hr />
                 <Link to="/admin/createEvent"><button className="btn btn-primary text-left">Create Event</button></Link>
             </React.Fragment>

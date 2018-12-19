@@ -7,11 +7,9 @@ export {
 
 export {
     fetchAllUsers
-    // deleteEvent
 } from './admin';
 
 export {
     fetchAllEvents,
     fetchUserEvents,
-    deleteEvent
 } from './event';
