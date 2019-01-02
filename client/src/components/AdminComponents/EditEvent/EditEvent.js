@@ -14,6 +14,7 @@ class EditEvent extends Component {
      }
 
      componentDidMount(){
+         // On Mount component pulls the data with the params and sets the state.
         const { match: { params } } = this.props;
         axios.get(`/api/event/${params.eventId}`).then(res=>{
             this.setState({ title: res.data.title})
@@ -24,6 +25,7 @@ class EditEvent extends Component {
             console.log('editEvent', this.state)
         })
      }
+     // Submit Handler 
      submit = () => {
         const { match: { params } } = this.props;
         const event = {
@@ -126,12 +128,14 @@ class EditEvent extends Component {
                                     name="description"
                                     className="form-control"
                                     required={true}
-                                    rows="3"
+                                    rows="5"
                                     placeholder="Enter Event Description"
-                                    defaultValue={this.state.description}
+                                    value={this.state.description}
                                     onChange = {this.handledescriptionChange}
-                                    minLength={50}
-                                    maxLength={1000}/>
+                                    // minLength={50}
+                                    // maxLength={1000}
+                                    >
+                                    </textarea>
                                 <div className="invalid-feedback" />
                             </div>
                             {/* Fix form inputs: label blocks file name*/}

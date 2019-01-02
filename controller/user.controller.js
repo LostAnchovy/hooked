@@ -39,7 +39,6 @@ exports.findAll = (req, res) => {
     var token = getToken(req.headers)
     console.log('parced authorization token:', token)
     jwt.verify(token, process.env.SECRET, (err, result) => {
-        // console.log(result)
         if (err) {
             res.status(401).send({ success: false, msg: 'Please provide a valid token' })
         } else if (result.isAdmin == false || result.isAdmin == null) {
@@ -67,7 +66,6 @@ exports.reset = (req, res, next) => {
         // },
         function(done){
            var token = jwt.sign({name: 'user'}, process.env.SECRET, {expiresIn:'24h'})
-        //    console.log(token)
            done(null, token)
         },
         function (token, done) {
@@ -165,7 +163,6 @@ exports.resetconfirm = (req, res) =>{
 // TAKES THE PASSWORD FROM THE REQ.PARAMS.TOKEN AND CHECKS IT AGAINST THE RESETPASSWORD TOKEN THAT WAS CREATED TO MAKE. STILL NEED TO MAKE SURE IT CHECKS FOR THE RESETPASSWORD EXPIRES FIELD. 
 
 exports.reset_password = (req, res) => {
-    // console.log('this is the req params',req.params)
     user.findOne({
         where:{resetPasswordToken: req.params.token,}
     }, (err) => {
